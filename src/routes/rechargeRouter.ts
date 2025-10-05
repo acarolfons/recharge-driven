@@ -6,6 +6,6 @@ import { validateSchema } from '../middlewares/validateSchemaMiddleware';
 const rechargesRouter = Router();
 
 rechargesRouter.post('/recharges', validateSchema(rechargeSchema), createRecharge);
-rechargesRouter.get('recharges/:number', getRechargesByNumber);
+rechargesRouter.get('/recharges/:number', getRechargesByNumber);
 
 export default rechargesRouter;
