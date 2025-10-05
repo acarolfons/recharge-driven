@@ -28,7 +28,10 @@ export async function createPhone(data: Phone & { document: string }) {
 
 export async function getPhonesByDocument(document: string) {
   const client = await phoneRepository.findClientByDocument(document);
-  if (!client) return [];
+  if (!client) throw {
+    type: 'not_found',
+    message: `Cliente com documento ${document} não encontrado`
+  };
 
   const phones = await phoneRepository.findPhonesByClientId(client.id!);
   return phones;

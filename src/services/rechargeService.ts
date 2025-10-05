@@ -12,7 +12,10 @@ export async function createRecharge(data: Recharge) {
 
 export async function getRechargesByNumber(number: string) {
   const phone = await phoneRepository.findByNumber(number);
-  if (!phone) return [];
+  if (!phone) throw {
+    type: 'not_found',
+    message: `Telefone com o numero ${number} não encontrado`
+  }; 
 
   const recharges = await rechargeRepository.findByPhoneId(phone.id!);
   return recharges;

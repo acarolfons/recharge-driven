@@ -3,7 +3,6 @@ import * as summaryService from '../services/summaryService';
 
 export async function getSummary(req: Request, res: Response) {
   const { document } = req.params;
-
   try {
     const summary = await summaryService.getSummaryByDocument(document);
     res.status(200).send(summary);

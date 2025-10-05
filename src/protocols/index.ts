@@ -1,15 +1,15 @@
-export interface Carrier {
+export type Carrier ={
     id: number;
     name: string;
     code: number;
 }
 
-export interface Client {
+export type Client ={
     id?: number;
     document: string;
 }
 
-export interface Phone {
+export type Phone ={
     id?: number;
     number: string;
     name: string;
@@ -18,7 +18,7 @@ export interface Phone {
     clientId: number;
 }
 
-export interface Recharge {
+export type Recharge ={
     id?: number;
     phoneId: number;
     amount: number;

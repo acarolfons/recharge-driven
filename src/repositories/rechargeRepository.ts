@@ -2,7 +2,7 @@ import db from '../database';
 import { Recharge } from '../protocols';
 
 export async function createRecharge(data: Recharge): Promise<Recharge> {
-  const result = await db.query(
+  const result = await db.query<Recharge>(
     `
     INSERT INTO recharges (phone_id, amount)
     VALUES ($1, $2)
@@ -14,7 +14,7 @@ export async function createRecharge(data: Recharge): Promise<Recharge> {
 }
 
 export async function findByPhoneId(phoneId: number): Promise<Recharge[]> {
-  const result = await db.query(
+  const result = await db.query<Recharge>(
     `SELECT * FROM recharges WHERE phone_id = $1 ORDER BY created_at DESC`,
     [phoneId]
   );
